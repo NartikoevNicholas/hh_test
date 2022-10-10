@@ -1,9 +1,5 @@
 import random
 
-n_list = [random.randint(0, 10000) for i in range(10000)]
-m_list = [random.randint(0, 10000) for i in range(10000)]
-s = 200000000
-
 
 def get_new_list(condition_break, list_price):
     result = []
@@ -28,15 +24,21 @@ def get_count_resume(last_list, full_list, condition_break):
     return result
 
 
-a_list = get_new_list(s, n_list)
-b_list = get_new_list(s, m_list)
+if __name__ == '__main__':
 
-first_count = 0
-if a_list:
-    first_count = get_count_resume(a_list[-1], b_list, s)
+    n_list = [random.randint(0, 10000) for i in range(10000)]
+    m_list = [random.randint(0, 10000) for i in range(10000)]
+    s = 200000000
 
-second_count = 0
-if b_list:
-    second_count = get_count_resume(b_list[-1], a_list, s)
+    a_list = get_new_list(s, n_list)
+    b_list = get_new_list(s, m_list)
 
-print(max(first_count, second_count))
+    first_count = 0
+    if a_list:
+        first_count = get_count_resume(a_list[-1], b_list, s)
+
+    second_count = 0
+    if b_list:
+        second_count = get_count_resume(b_list[-1], a_list, s)
+
+    print(max(first_count, second_count))
